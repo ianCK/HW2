@@ -90,7 +90,7 @@ function start() {
                     warning("")
                     $('#check').on('click', function(e) {
                         if (e.which == 1) {
-                            $.post('https://js.kchen.club/B12345678/insert', data, function(response) {
+                            $.post('https://js.kchen.club/B07102015/insert', data, function(response) {
                                 if (response) {
                                     if (response.result) {
                                         $(this).off('click')

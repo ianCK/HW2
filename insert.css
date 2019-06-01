@@ -2,6 +2,14 @@ body {
     background: #dfdfdf;
 }
 
+.side_nav_item {
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", sans-serif;
+    list-style: none;
+    font-size: 20px;
+    line-height: 2;
+    font-weight: bold;
+}
+
 .show_area.in {
     animation-name: in;
 }
@@ -169,7 +177,6 @@ input {
 .side_nav_inner {
     position: absolute;
     top: 100px;
-    left: 20px;
 }
 
 .side_nav_menu {

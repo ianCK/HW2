@@ -1,6 +1,7 @@
 var cnt = 0,
     now = 0,
-    total, items
+    total, items, search = [],
+    tv = Number(0)
 $(document).ready(function() {
     $('#decoline').removeClass('hide')
     $('#side_nav_btn').removeClass('hide')
@@ -24,14 +25,21 @@ function newItem(item, id) {
     var img = $('<img>').attr('src', item.image).attr('class', 'image'),
         name = $('<h3>').attr('class', 'name').text(item.name),
         price = $('<p>').attr('class', 'price').text('NT$ ' + item.price),
-        div = $('<div>').attr('class', 'item show').attr('id', 'item' + id)
+        div = $('<div>').attr('class', 'item').attr('id', 'item' + id)
     $(div).append(img).append(name).append(price)
     if (id % 20 == 0) $('#items').append($('<div>').attr('class', 'page hide').attr('id', 'page' + Math.floor(id / 20)))
     $('#page' + Math.floor(id / 20)).append(div)
 }
 
+function warning(s) {
+    $('#warning').text(s)
+}
+
 function clearItem() {
     $('#items').empty()
+    total = 0
+    $('#next_page_btn').addClass('hide')
+    $('#prev_page_btn').addClass('hide')
 }
 
 function next_page() {
@@ -106,7 +114,44 @@ function start() {
             if (response) {
                 if (response.result) {
                     items = response.items
-                    total = items.length
+                    for (var i = 0; i < items.length; i++)
+                        if (Number(items[i].price) > tv) tv = Number(items[i].price)
+                    $('#search').on('click', function(e) {
+                        if (e.which == 1) {
+                            clearItem()
+                            name = $('#name').val()
+                            l = $('#price_low').val()
+                            r = $('#price_up').val()
+                            if (l != "" && isNaN(Number(l))) {
+                                warning("金額下限須為正整數!!")
+                                return
+                            }
+                            if (r != "" && isNaN(r)) {
+                                warning("金額上限須為正整數")
+                                return
+                            }
+                            l = (l == "") ? 0 : Number(l)
+                            r = (r == "") ? tv : Number(r)
+                            search = []
+                            for (var i = 0; i < items.length; i++)
+                                if (items[i].name.search(name) != -1 && Number(items[i].price) >= l && Number(items[i].price) <= r) search.push(items[i])
+                            if (search.length == 0) {
+                                warning("查無符合商品")
+                                return
+                            }
+                            warning("")
+                            for (var i = 0; i < search.length; i++) newItem(search[i], i)
+                            now = 0
+                            total = search.length
+                            if (now == 0) $('#prev_page_btn').addClass('hide')
+                            else $('#prev_page_btn').removeClass('hide')
+                            if (now == Math.floor(total / 20)) $('#next_page_btn').addClass('hide')
+                            else $('#next_page_btn').removeClass('hide')
+                            if (!$('#show_area').hasClass('in')) $('#show_area').attr('class', 'show_area in')
+                            $('#page0').attr('class', 'page')
+                            console.log("showed")
+                        }
+                    })
                 }
             }
         }, "json")

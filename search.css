@@ -1,3 +1,11 @@
+.side_nav_item {
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", sans-serif;
+    list-style: none;
+    font-size: 20px;
+    line-height: 2;
+    font-weight: bold;
+}
+
 body {
     background: #dfdfdf;
 }
@@ -93,7 +101,7 @@ input {
 .show_area {
     background: #5c5cff;
     border-radius: 15px 15px 0 0;
-    height: -webkit-fill-available;
+    height: fit-content;
     animation-duration: 0.5s;
     animation-fill-mode: forwards;
 }
@@ -191,7 +199,6 @@ input {
     padding-left: 0px;
     padding-right: 0px;
     border-radius: 20px;
-    display: none;
 }
 
 .image {
@@ -244,7 +251,6 @@ input {
 .side_nav_inner {
     position: absolute;
     top: 100px;
-    left: 20px;
 }
 
 .side_nav_menu {

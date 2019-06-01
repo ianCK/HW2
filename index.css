@@ -1,0 +1,400 @@
+body {
+    background: #dfdfdf;
+}
+
+.title {
+    margin: auto;
+    width: 100%;
+    position: relative;
+    top: 0px;
+    text-align: center;
+    background: #4054b3;
+    height: 50px;
+    border-radius: 0px 0px 20px 20px;
+    color: white;
+    font-size: 32px;
+}
+
+.title.start {
+    animation-name: title_start;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes title_start {
+    from {
+        opacity: 0;
+        top: -50px;
+    }
+    to {
+        opacity: 1;
+        top: 0px;
+    }
+}
+
+.footer {
+    text-align: center;
+    border-top: solid 2px gray;
+}
+
+.items {
+    height: 1600px;
+    margin-top: 30px;
+    position: relative;
+}
+
+.page {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-wrap: wrap;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in
+}
+
+.page.left_in {
+    animation-name: left_in;
+}
+
+.page.left_out {
+    animation-name: left_out;
+}
+
+.page.right_in {
+    animation-name: right_in;
+}
+
+.page.right_out {
+    animation-name: right_out;
+}
+
+@keyframes left_in {
+    from {
+        transform: translate(200%, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes left_out {
+    from {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-200%, 0);
+        opacity: 0;
+    }
+}
+
+@keyframes right_in {
+    from {
+        transform: translate(-200%, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes right_out {
+    from {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    to {
+        transform: translate(200%, 0);
+        opacity: 0;
+    }
+}
+
+.item {
+    box-sizing: border-box;
+    background: #ffffff;
+    height: 300px;
+    position: relative;
+    text-align: center;
+    background-origin: padding-box;
+    margin-bottom: 20px;
+    margin-left: 14px;
+    margin-right: 0px;
+    margin-top: 0px;
+    padding-top: 34px;
+    padding-bottom: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    border-radius: 20px;
+    display: none;
+}
+
+.item.show {
+    display: block;
+    animation-name: item_show;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes item_show {
+    from {
+        transform: translate(-200px, 0);
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.item:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+    transform: translate3d(-5px, -5px, 0);
+    transition-delay: 0s;
+    transition-duration: 0.2s;
+    transition-property: all;
+    transition-timing-function: linear;
+}
+
+.image {
+    width: 160px;
+    height: 160px;
+    margin-top: 0px;
+    margin-bottom: 22px;
+    margin-left: 37px;
+    margin-right: 37px;
+}
+
+.name {
+    font-size: 14px;
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", sans-serif;
+    color: #212121;
+    margin-top: 0px;
+    margin-bottom: 3px;
+    margin-left: 20px;
+    margin-right: 20px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.price {
+    color: #ff6709;
+    font-family: "Microsoft Yahei", "Hiragino Sans GB", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.contentwrap {
+    position: relative;
+    margin: 16px 70px;
+}
+
+.close {
+    animation-name: close;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.open {
+    animation-name: open;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.side_nav_inner {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+}
+
+.side_nav_menu {
+    position: fixed;
+    top: 0px;
+    right: -200px;
+    height: 100%;
+    width: 200px;
+    background-color: yellow;
+}
+
+@keyframes open {
+    from {}
+    to {
+        transform: translate(-200px);
+    }
+}
+
+@keyframes close {
+    from {
+        transform: translate(-200px);
+    }
+    to {}
+}
+
+.btn.start {
+    animation-name: btn_start;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+
+.btn {
+    position: fixed;
+    width: 0px;
+    height: 0px;
+}
+
+.prev_page_btn {
+    top: 50%;
+    right: 30px;
+    border: 15px solid;
+    border-color: transparent transparent transparent black;
+}
+
+.next_page_btn {
+    top: 50%;
+    left: 30px;
+    border: 15px solid;
+    border-color: transparent black transparent transparent;
+}
+
+.side_nav_btn {
+    top: 30px;
+    right: 30px;
+    border: 20px solid;
+    border-color: black transparent transparent transparent;
+}
+
+.side_nav_btn.deactive {
+    animation-name: side_nav_btn_close;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes side_nav_btn_close {
+    from {
+        transform: rotate(0.25turn);
+    }
+    to {}
+}
+
+@keyframes btn_start {
+    from {
+        opacity: 0;
+    }
+    to {}
+}
+
+.side_nav_btn.active {
+    animation-name: side_nav_btn_open;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes side_nav_btn_open {
+    from {}
+    to {
+        transform: rotate(0.25turn);
+    }
+}
+
+.decoline>li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: yellow;
+    position: fixed;
+    list-style: none;
+}
+
+.decoline>li:nth-child(1) {
+    height: 16px;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.decoline>li:nth-child(2) {
+    height: 100%;
+    width: 16px;
+    top: 0;
+    left: 0;
+}
+
+.decoline>li:nth-child(3) {
+    height: 16px;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+}
+
+.decoline>li:nth-child(4) {
+    height: 100%;
+    width: 16px;
+    bottom: 0;
+    right: 0;
+}
+
+.decoline.start>li:nth-child(1) {
+    animation: start_move_1;
+    animation-duration: 2s;
+}
+
+@keyframes start_move_1 {
+    from {
+        left: -100%;
+    }
+    to {
+        left: 0;
+    }
+}
+
+.decoline.start>li:nth-child(2) {
+    animation: start_move_2;
+    animation-duration: 2s;
+}
+
+@keyframes start_move_2 {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 0;
+    }
+}
+
+.decoline.start>li:nth-child(3) {
+    animation: start_move_3;
+    animation-duration: 2s;
+}
+
+@keyframes start_move_3 {
+    from {
+        right: -100%;
+    }
+    to {
+        right: 0;
+    }
+}
+
+.decoline.start>li:nth-child(4) {
+    animation: start_move_4;
+    animation-duration: 2s;
+}
+
+@keyframes start_move_4 {
+    from {
+        bottom: -100%;
+    }
+    to {
+        bottom: 0;
+    }
+}
+
+.hide {
+    display: none;
+}
